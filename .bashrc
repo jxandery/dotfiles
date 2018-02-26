@@ -36,7 +36,7 @@ prefix=
 if [ -n "$SSH_CONNECTION" ]; then
   prefix="\[\033[01;33m\]\u@\h"
 else
-  prefix="\[\033[01;32m\]\u@\h"
+  prefix="\[\033[01;32m\]\u"
 fi
 
 [ -z "$PS1" ] || export PS1="$prefix\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(git_prompt_info '(%s)')$ "
