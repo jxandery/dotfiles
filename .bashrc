@@ -41,8 +41,8 @@ fi
 
 [ -z "$PS1" ] || export PS1="$prefix\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$(git_prompt_info '(%s)')$ "
 
-if [ -f '/usr/local/etc/bash_completion.d/git-completion.bash' ]; then
-  source '/usr/local/etc/bash_completion.d/git-completion.bash'
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
 fi
 
 [ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
