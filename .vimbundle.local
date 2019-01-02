@@ -1,3 +1,7 @@
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-endwise'
+Plug 'ervandew/supertab'
+Plug 'christoomey/vim-tmux-navigator'
+
 
