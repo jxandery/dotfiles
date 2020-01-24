@@ -47,9 +47,9 @@ done
 if [[ "$OSTYPE" == 'darwin'* ]]; then
   for file in $(find custom -type f -not -name '*README*'); do
     path="${file/"custom"/$HOME}"
-    name=$(basename $file)
+    name=$(basename "$file")
     if [ ! -L "$path" ]; then
-      dest=$(dirname $path)
+      dest=$(dirname "$path")
       link_notice $name "absent"
       mkdir -p "$dest"
       ln -nfs "$PWD/$file" "$dest"
