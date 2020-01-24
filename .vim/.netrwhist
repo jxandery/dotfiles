@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/jack/dotcom/app'
 let g:netrw_dirhist_2='/Users/jack/dotcom/app/views'
 let g:netrw_dirhist_3='/Users/jack/.dotfiles'
+let g:netrw_dirhist_4='/Users/jack/dotcom/lib/api/shipment'
+let g:netrw_dirhist_5='/Users/jack/dotcom/app/views/admin/orders'
+let g:netrw_dirhist_6='/Users/jack/dotcom/app/views/admin/orders/fulfillment_requests'

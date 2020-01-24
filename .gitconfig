@@ -29,6 +29,8 @@
 	excludesfile = ~/.cvsignore
 	editor = vim
 	whitespace = warn
+[credential]
+	helper = osxkeychain
 [help]
 	autocorrect = 10
 [interactive]
