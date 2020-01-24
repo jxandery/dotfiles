@@ -1,6 +1,5 @@
 # ~/.bashrc
 # vim:set ft=sh sw=2 sts=2:
-
 source "$HOME/.sharedrc"
 
 # Store 10,000 history entries
@@ -45,7 +44,7 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-[ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
+eval "$(/Users/jack/dotfiles/hr/bin/hr init -)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

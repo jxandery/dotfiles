@@ -11,24 +11,33 @@ call plug#begin('~/.vim/bundle')
 
 
 " Make sure you use single quotes
-Plug 'hashrocket/vim-hashrocket'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Konfekt/FastFold'
 Plug 'adamlowe/vim-slurper'
-Plug 'jbranchaud/vim-bdubs'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
+Plug 'exu/pgsql.vim'
 Plug 'godlygeek/tabular'
 Plug 'gregsexton/gitv'
+Plug 'hashrocket/vim-hashrocket'
 Plug 'heartsentwined/vim-emblem'
+Plug 'jbranchaud/vim-bdubs'
 Plug 'jgdavey/tslime.vim'
 Plug 'jgdavey/vim-blockle'
 Plug 'jgdavey/vim-railscasts'
 Plug 'jgdavey/vim-turbux'
 Plug 'jgdavey/vim-weefactor'
-Plug 'kchmck/vim-coffee-script'
+Plug 'jszakmeister/vim-togglecursor'
+Plug 'kana/vim-textobj-user'
 Plug 'leshill/vim-json'
 Plug 'mileszs/ack.vim'
+Plug 'mxw/vim-jsx'
+Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'pangloss/vim-javascript'
 Plug 'rondale-sc/vim-spacejam'
+Plug 'sbdchd/neoformat'
+Plug 'scrooloose/nerdtree'
 Plug 'slim-template/vim-slim'
 Plug 'therubymug/vim-pyte'
 Plug 'tpope/vim-abolish'
@@ -58,16 +67,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'wgibbs/vim-irblack'
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'exu/pgsql.vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'mxw/vim-jsx'
-Plug 'sbdchd/neoformat'
-
-if filereadable(expand('~/.vimbundle.local'))
-  source ~/.vimbundle.local
-endif
 
 " Initialize plugin system
 call plug#end()
