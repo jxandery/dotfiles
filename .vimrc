@@ -31,6 +31,10 @@ set encoding=utf-8
 
 set noswapfile
 
+" split/join plugin: allow it work inside methods
+let g:splitjoin_ruby_curly_braces = 0
+let g:splitjoin_ruby_hanging_args = 0
+
 " Add comma as leader
 :nmap , \
 
@@ -38,6 +42,8 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+map j gj
+map k gk
 
 " vim tab navigation
 nnoremap th :tabfirst<CR>
@@ -112,6 +118,10 @@ nnoremap <C-w><bar> :vsp<cr>
 
 set softtabstop=2 shiftwidth=2 expandtab
 
+" uses system clipboard when copying; allows you to copy from vim and paste
+" into another application or term tab/window.
+set clipboard=unnamed
+
 " vp doesn't replace paste buffer
 function! RestoreRegister()
   let @" = s:restore_reg
@@ -134,8 +144,8 @@ let g:togglecursor_leave = 'block'
 
 " fastfold config"
 let g:ruby_fold = 1
-set foldnestmax=10
-set foldlevel=10
+set foldnestmax=20
+set foldlevel=20
 
 " ctrlp.vim config
 

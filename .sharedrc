@@ -132,6 +132,8 @@ alias gra='git rebase --abort'
 alias gc='git checkout'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
 alias vi='vim'
+alias be='bundle exec'
+alias sr='bundle exec spring rspec'
 
 if [ "$(uname)" = Darwin -a "$(command -v vim)" = /usr/bin/vim ]; then
   bettervim="/Applications/MacVim.app/Contents/MacOS/Vim"
