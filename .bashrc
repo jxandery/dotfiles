@@ -44,7 +44,7 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-eval "$(/Users/jack/dotfiles/hr/bin/hr init -)"
+# eval "$(/Users/jack/dotfiles/bin/hr init -)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

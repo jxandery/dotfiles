@@ -26,7 +26,7 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = ~/.cvsignore
+	excludesfile = /Users/jack/.cvsignore
 	editor = vim
 	whitespace = warn
 [credential]
@@ -55,4 +55,10 @@
 	prune = true
 [user]
 	name = Jack Yeh
-	email =  jack.yeh@gmail.com
+	email = jack.yeh@hey.com
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
