@@ -8,3 +8,6 @@
 --ignore-dir=log
 --ignore-dir=tags
 --ignore-dir=tmp
+
+# Do not search these files for quicker lookup
+--ignore-file=db/seeds.rb

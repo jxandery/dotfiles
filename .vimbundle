@@ -49,6 +49,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-haml'
+Plug 'tpope/vim-jdaddy' " gqaj "pretty prints" (wraps/indents/sorts keys/otherwise cleans up) the JSON construct under the cursor.
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-ragtag'

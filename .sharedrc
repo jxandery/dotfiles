@@ -36,6 +36,9 @@ twiki () {
   rake db:migrate && rake db:migrate:redo && rake db:test:prepare
 }
 
+alias aliases='vim ~/dotfiles/.sharedrc'
+alias show_text='stty sane'
+alias reload='. ~/.bash_profile'
 alias sc='rails console'
 alias ss='rails server'
 alias sdbc='rails dbconsole -p'
@@ -48,6 +51,38 @@ alias ltmate="tmate display -p '#{tmate_ssh}'"
 alias rt='bundle exec spring rspec spec/acceptance --format RspecApiDocumentation::ApiFormatter'
 
 alias ll='ls -l'
+
+alias ..='cd ..'
+alias sophie='cd sophie'
+alias yehme='cd yehme'
+alias ga='git add '
+alias gb='git branch'
+alias gap='git add -p'
+alias gnap='git add -N --ignore-removal . && gap && gref'
+alias glp='git log -p'
+alias glg='git log --graph --oneline --decorate --color --all'
+alias gb='git branch'
+alias gcm='git commit -m'
+alias gca='git commit -a -v'
+alias gcl='git clean -f -d'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdh='git diff HEAD'
+alias gl='git pull'
+alias glod='git log --oneline --decorate'
+# alias glod='git log --graph --pretty="%Cgreen%h%Creset%Cblue%d%Creset %Cred%an%Creset: %s"'
+alias gp='git push'
+alias gpr='git pull --rebase'
+alias gs='git status'
+alias gr='git rebase'
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias gc='git checkout'
+alias reset-authors='git commit --amend --reset-author -C HEAD'
+alias vi='vim'
+alias be='bundle exec'
+alias sr='bundle exec spring rspec'
+alias gph='git push && git push heroku main'
 
 # git_prompt_info accepts 0 or 1 arguments (i.e., format string)
 # returns text to add to bash PS1 prompt (includes branch name)
@@ -106,34 +141,6 @@ gcr() {
 gref() {
   command git --no-pager diff --cached --stat | command grep "|\s*0$" | awk '{system("command git reset " $1)}'
 }
-
-alias ga='git add '
-alias gb='git branch'
-alias gap='git add -p'
-alias gnap='git add -N --ignore-removal . && gap && gref'
-alias glp='git log -p'
-alias glg='git log --graph --oneline --decorate --color --all'
-alias gb='git branch'
-alias gcm='git commit -m'
-alias gca='git commit -a -v'
-alias gcl='git clean -f -d'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gdh='git diff HEAD'
-alias gl='git pull'
-alias glod='git log --oneline --decorate'
-# alias glod='git log --graph --pretty="%Cgreen%h%Creset%Cblue%d%Creset %Cred%an%Creset: %s"'
-alias gp='git push'
-alias gpr='git pull --rebase'
-alias gs='git status'
-alias gr='git rebase'
-alias grc='git rebase --continue'
-alias gra='git rebase --abort'
-alias gc='git checkout'
-alias reset-authors='git commit --amend --reset-author -C HEAD'
-alias vi='vim'
-alias be='bundle exec'
-alias sr='bundle exec spring rspec'
 
 if [ "$(uname)" = Darwin -a "$(command -v vim)" = /usr/bin/vim ]; then
   bettervim="/Applications/MacVim.app/Contents/MacOS/Vim"

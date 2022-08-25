@@ -29,8 +29,6 @@ augroup END
 
 set encoding=utf-8
 
-set noswapfile
-
 " split/join plugin: allow it work inside methods
 let g:splitjoin_ruby_curly_braces = 0
 let g:splitjoin_ruby_hanging_args = 0
@@ -180,6 +178,17 @@ set nowritebackup
 
 " Disable swapfile
 set noswapfile
+
+" Detects changes to files that are made outside of vim.
+set autoread
+
+augroup local
+  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+        \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+  autocmd FileChangedShellPost *
+        \ silent !echo "File changed on disk. Buffer reloaded."
+augroup END
+
 
 " airline
 let g:airline_powerline_fonts=1

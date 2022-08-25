@@ -26,7 +26,7 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = ~/.cvsignore
+	excludesfile = /Users/jackyeh/.gitignore
 	editor = vim
 	whitespace = warn
 [credential]
