@@ -33,6 +33,10 @@ set encoding=utf-8
 let g:splitjoin_ruby_curly_braces = 0
 let g:splitjoin_ruby_hanging_args = 0
 
+" adds vertical indentation guides
+let g:indentLine_char = '⡇'
+let g:indentLine_color_term = 10
+
 " Add comma as leader
 :nmap , \
 

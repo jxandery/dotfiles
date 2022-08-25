@@ -36,6 +36,7 @@ twiki () {
   rake db:migrate && rake db:migrate:redo && rake db:test:prepare
 }
 
+alias plugins='vim ~/.vimbundle'
 alias aliases='vim ~/dotfiles/.sharedrc'
 alias show_text='stty sane'
 alias reload='. ~/.bash_profile'
