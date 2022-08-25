@@ -1,7 +1,7 @@
 # DOTMATRIX
 
-Dotmatrix is a collection of dotfiles used at Hashrocket to customize various
-development tools. This project is the culmination of many years worth of
+This repo is a collection of dotfiles used at Hashrocket to customize various
+development tools, plus my own. This project is the culmination of many years worth of
 tinkering with our favorite tools to get them to behave just right. We think
 using Dotmatrix makes working with these tools more pleasant and hope you will
 too!
@@ -28,7 +28,7 @@ you already have.
 Start by cloning down the repo:
 
 ```
-$ git clone https://github.com/hashrocket/dotmatrix.git
+$ git clone https://github.com/jxandery/dotfiles.git
 ```
 
 Then run this script:
@@ -38,15 +38,6 @@ $ bin/install
 ```
 
 This script symlinks all dotfiles into your home directory.
-
-### Hashrocket Workstation
-
-Dotmatrix comes with gitconfig for our Hashrocket Workstations that can be
-installed like so:
-
-```
-$ bin/install --workstation
-```
 
 ## Safe by Default
 
