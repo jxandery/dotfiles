@@ -70,6 +70,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'wgibbs/vim-irblack'
+Plug 'sheerun/vim-polyglot'
+Plug 'mattn/emmet-vim'
 
 " Initialize plugin system
 call plug#end()

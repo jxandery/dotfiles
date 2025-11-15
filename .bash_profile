@@ -10,9 +10,18 @@ export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-. /usr/local/opt/asdf/libexec/asdf.sh
+. "$HOME/.asdf/asdf.sh"
 
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+. "$HOME/.asdf/completions/asdf.bash"
 
 # heroku autocomplete setup
 HEROKU_AC_BASH_SETUP_PATH=/Users/jackyeh/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
+
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export GEM_HOME="$HOME/.gem"
+
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Added by Windsurf
+export PATH="/Users/jyeh/.codeium/windsurf/bin:$PATH"

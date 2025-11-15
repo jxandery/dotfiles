@@ -149,8 +149,11 @@ let g:ruby_fold = 1
 set foldnestmax=20
 set foldlevel=20
 
-" ctrlp.vim config
+" emmet-vim config (html tags)
+let g:user_emmet_mode='n'     "only enable in normal mode functions.
+let g:user_emmet_leader_key='/' "create html tags short cut: '/,' while cursor is on last letter of tag name
 
+" ctrlp.vim config
 if get(g:, 'loaded_ctrlp', 1)
   let g:ctrlp_match_window_reversed = 0
   let g:ctrlp_working_path_mode = 'a'

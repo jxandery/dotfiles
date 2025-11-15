@@ -56,8 +56,21 @@ find-up () {
     echo "$path"
 }
 
+# Claude Prompt Tracker: Auto-install slash commands in new projects
+claude_auto_setup() {
+    if [ -d "$PWD/.claude" ] && [ ! -d "$PWD/.claude/commands" ]; then
+        TRACKER_COMMANDS="$HOME/claude-projects/prompt-tracker/templates/claude-commands"
+        if [ -d "$TRACKER_COMMANDS" ]; then
+            echo "📊 Installing prompt tracker slash commands..."
+            mkdir -p "$PWD/.claude/commands"
+            cp -r "$TRACKER_COMMANDS"/* "$PWD/.claude/commands/" 2>/dev/null && \
+            echo "✓ Commands installed: /prompt-stats, /search-prompts, /analyze-my-prompts"
+        fi
+    fi
+}
+
 cdnvm(){
-    cd "$@";
+    builtin cd "$@";
     nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
 
     # If there are no .nvmrc file, use the default nvm version
@@ -96,5 +109,15 @@ cdnvm(){
             nvm use "$nvm_version";
         fi
     fi
+
+    # Auto-setup Claude prompt tracker commands
+    claude_auto_setup
 }
 alias cd='cdnvm'
+alias ibrew="arch -x86_64 brew"
+export PATH="/usr/local/homebrew/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# Quick command to list all Claude Code projects
+alias claude-projects='echo "=== Claude Code Projects ==="; find ~/src ~/claude-projects ~ -maxdepth 2 -name ".claude" -type d 2>/dev/null | sed "s|/.claude||" | grep -Ev "^$HOME\$" | sort'
