@@ -43,7 +43,6 @@ alias reload='. ~/.bash_profile'
 alias sc='rails console'
 alias ss='rails server'
 alias sdbc='rails dbconsole -p'
-alias hrc='heroku run rails console -a hu9ye4ckyh'
 alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'
 alias kill3001='kill -9 $(lsof -i tcp:3001 -t)'
 alias kill4567='kill -9 $(lsof -i tcp:4567 -t)'
@@ -54,6 +53,8 @@ alias rt='bundle exec spring rspec spec/acceptance --format RspecApiDocumentatio
 alias ll='ls -l'
 
 alias ..='cd ..'
+alias mona='cd mona'
+alias tac='cd tactical_agentic_coding'
 alias sophie='cd sophie'
 alias yehme='cd yehme'
 alias ga='git add '
@@ -64,7 +65,7 @@ alias glp='git log -p'
 alias glg='git log --graph --oneline --decorate --color --all'
 alias gb='git branch'
 alias gcm='git commit -m'
-alias gca='git commit -a -v'
+alias gca='git commit --amend'
 alias gcl='git clean -f -d'
 alias gd='git diff'
 alias gdc='git diff --cached'
@@ -82,8 +83,12 @@ alias gc='git checkout'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
 alias vi='vim'
 alias be='bundle exec'
+alias rspec='be rspec'
 alias sr='bundle exec spring rspec'
 alias gph='git push && git push heroku main'
+
+# Quick command to list all Claude Code projects
+alias claude-projects='echo "=== Claude Code Projects ==="; find ~/src ~/claude-projects ~ -maxdepth 2 -name ".claude" -type d 2>/dev/null | sed "s|/.claude||" | grep -Ev "^\$HOME\$" | sort'
 
 # git_prompt_info accepts 0 or 1 arguments (i.e., format string)
 # returns text to add to bash PS1 prompt (includes branch name)
