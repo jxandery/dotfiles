@@ -52,9 +52,6 @@ find-up () {
     echo "$path"
 }
 
-
-. "$HOME/.local/bin/env"
-
 # Claude Prompt Tracker: Auto-install slash commands in new projects
 claude_auto_setup() {
     if [ -d "$PWD/.claude" ] && [ ! -d "$PWD/.claude/commands" ]; then
@@ -68,6 +65,11 @@ claude_auto_setup() {
     fi
 }
 
+cd(){
+    builtin cd "$@";
+    claude_auto_setup
+}
+
 # Auto-run on directory change (zsh)
 if [[ -n "$ZSH_VERSION" ]]; then
     chpwd_functions+=(claude_auto_setup)
@@ -75,3 +77,13 @@ fi
 # For bash, uncomment the next line:
 # PROMPT_COMMAND="claude_auto_setup; $PROMPT_COMMAND"
 
+=======
+alias cd='cdnvm'
+alias ibrew="arch -x86_64 brew"
+export PATH="/usr/local/homebrew/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# Quick command to list all Claude Code projects
+alias claude-projects='echo "=== Claude Code Projects ==="; find ~/src ~/claude-projects ~ -maxdepth 2 -name ".claude" -type d 2>/dev/null | sed "s|/.claude||" | grep -Ev "^$HOME\$" | sort'
+>>>>>>> 46385dd5a0e6c9cbb977217433b435e39b78e07e

@@ -9,9 +9,9 @@ export PATH=.git/safe/../../bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/us
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-. /usr/local/opt/asdf/libexec/asdf.sh
+. "$HOME/.asdf/asdf.sh"
 
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+. "$HOME/.asdf/completions/asdf.bash"
 
 # heroku autocomplete setup
 HEROKU_AC_BASH_SETUP_PATH=/Users/jackyeh/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
@@ -30,3 +30,6 @@ export PATH="/Users/jackyeh/.codeium/windsurf/bin:$PATH"
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:${PATH}"
 export PATH
+
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export GEM_HOME="$HOME/.gem"
