@@ -72,7 +72,6 @@ cd() {
 }
 alias ibrew="arch -x86_64 brew"
 export PATH="/usr/local/homebrew/bin:$PATH"
-eval "$(rbenv init -)"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Quick command to list all Claude Code projects
