@@ -205,3 +205,19 @@ endif
 let g:airline_symbols.space = "\ua0"
 
 set novisualbell
+
+" create spec file based on current file path + open in split pane
+command! CreateSpec :call CreateSpecFile()
+function! CreateSpecFile()
+  let l:current_file = expand('%:p')
+  if l:current_file =~ 'app/'
+    let l:spec_file = substitute(l:current_file, 'app/', 'spec/', '')[:-4] . '_spec.rb'
+  else
+    echo 'Cannot determine spec file path'
+    return
+  endif
+  execute 'vsplit ' . l:spec_file
+endfunction
+
+" copy filepath shortcut ,f
+nnoremap ,f :let @+ = expand('%:p')<CR>:echo 'File path copied to clipboard'<CR>

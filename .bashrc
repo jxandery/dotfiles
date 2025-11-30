@@ -44,6 +44,13 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
+find-up () {
+    path=$(pwd)
+    while [[ "$path" != "" && ! -e "$path/$1" ]]; do
+        path=${path%/*}
+    done
+    echo "$path"
+}
 
 # Claude Prompt Tracker: Auto-install slash commands in new projects
 claude_auto_setup() {
@@ -70,7 +77,3 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Quick command to list all Claude Code projects
 alias claude-projects='echo "=== Claude Code Projects ==="; find ~/src ~/claude-projects ~ -maxdepth 2 -name ".claude" -type d 2>/dev/null | sed "s|/.claude||" | grep -Ev "^$HOME\$" | sort'
-
-# Added by Claude Code Collaboration installer
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"

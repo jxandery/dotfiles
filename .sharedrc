@@ -40,13 +40,14 @@ alias plugins='vim ~/.vimbundle'
 alias aliases='vim ~/dotfiles/.sharedrc'
 alias show_text='stty sane'
 alias reload='. ~/.bash_profile'
-
 alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'
 alias kill3001='kill -9 $(lsof -i tcp:3001 -t)'
 alias kill4567='kill -9 $(lsof -i tcp:4567 -t)'
 alias kill9229='kill -9 $(lsof -i tcp:9229 -t)'
 
 alias ..='cd ..'
+alias mona='cd mona'
+alias tac='cd tactical_agentic_coding'
 alias sophie='cd sophie'
 alias yehme='cd yehme'
 alias vi='vim'
@@ -62,7 +63,7 @@ alias glp='git log -p'
 alias glg='git log --graph --oneline --decorate --color --all'
 alias gb='git branch'
 alias gcm='git commit -m'
-alias gca='git commit -a -v'
+alias gca='git commit --amend'
 alias gcl='git clean -f -d'
 alias gd='git diff'
 alias gdc='git diff --cached'
@@ -77,17 +78,12 @@ alias grc='git rebase --continue'
 alias gra='git rebase --abort'
 alias gc='git checkout'
 alias reset-authors='git commit --amend --reset-author -C HEAD'
+alias vi='vim'
+alias be='bundle exec'
+alias rspec='be rspec'
 
-# Navigating Cancer specific
-alias ngc='cd ~/src/gc'
-alias cmds='cd ~/src/cs-clinic-metadata'
-alias sp='cd ~/src/cs-symptom-pathways'
-alias micro='cd ~/src/clinic-solutions-microservices'
-alias ncc='cd ~/src/navigatingcare-components'
-alias aws_sso='aws sso login --profile direct; AWS_PROFILE=direct aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 706014839439.dkr.ecr.us-east-1.amazonaws.com'
-
-# aws sso login for Navigating Cancer
-alias alogin='aws sso login --profile direct && aws sso login --profile cleardata'
+# Quick command to list all Claude Code projects
+alias claude-projects='echo "=== Claude Code Projects ==="; find ~/src ~/claude-projects ~ -maxdepth 2 -name ".claude" -type d 2>/dev/null | sed "s|/.claude||" | grep -Ev "^\$HOME\$" | sort'
 
 # git_prompt_info accepts 0 or 1 arguments (i.e., format string)
 # returns text to add to bash PS1 prompt (includes branch name)
