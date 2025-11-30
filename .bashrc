@@ -44,17 +44,6 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-find-up () {
-    path=$(pwd)
-    while [[ "$path" != "" && ! -e "$path/$1" ]]; do
-        path=${path%/*}
-    done
-    echo "$path"
-}
 
 # Claude Prompt Tracker: Auto-install slash commands in new projects
 claude_auto_setup() {
@@ -69,51 +58,11 @@ claude_auto_setup() {
     fi
 }
 
-cdnvm(){
-    builtin cd "$@";
-    nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
-
-    # If there are no .nvmrc file, use the default nvm version
-    if [[ ! $nvm_path = *[^[:space:]]* ]]; then
-
-        declare default_version;
-        default_version=$(nvm version default);
-
-        # If there is no default version, set it to `node`
-        # This will use the latest version on your machine
-        if [[ $default_version == "N/A" ]]; then
-            nvm alias default node;
-            default_version=$(nvm version default);
-        fi
-
-        # If the current version is not the default version, set it to use the default version
-        if [[ $(nvm current) != "$default_version" ]]; then
-            nvm use default;
-        fi
-
-        elif [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
-        declare nvm_version
-        nvm_version=$(<"$nvm_path"/.nvmrc)
-
-        # Add the `v` suffix if it does not exists in the .nvmrc file
-        if [[ $nvm_version != v* ]]; then
-            nvm_version="v""$nvm_version"
-        fi
-
-        # If it is not already installed, install it
-        if [[ $(nvm ls "$nvm_version" | tr -d '[:space:]') == "N/A" ]]; then
-            nvm install "$nvm_version";
-        fi
-
-        if [[ $(nvm current) != "$nvm_version" ]]; then
-            nvm use "$nvm_version";
-        fi
-    fi
-
-    # Auto-setup Claude prompt tracker commands
+# Auto-run Claude prompt tracker setup when changing directories
+cd() {
+    builtin cd "$@"
     claude_auto_setup
 }
-alias cd='cdnvm'
 alias ibrew="arch -x86_64 brew"
 export PATH="/usr/local/homebrew/bin:$PATH"
 eval "$(rbenv init -)"
@@ -121,3 +70,7 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Quick command to list all Claude Code projects
 alias claude-projects='echo "=== Claude Code Projects ==="; find ~/src ~/claude-projects ~ -maxdepth 2 -name ".claude" -type d 2>/dev/null | sed "s|/.claude||" | grep -Ev "^$HOME\$" | sort'
+
+# Added by Claude Code Collaboration installer
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
