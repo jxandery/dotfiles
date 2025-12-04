@@ -38,6 +38,7 @@ twiki () {
 
 alias plugins='vim ~/.vimbundle'
 alias aliases='vim ~/dotfiles/.sharedrc'
+alias nc_aliases='vim ~/dotfiles/.workrc'
 alias show_text='stty sane'
 alias reload='. ~/.bash_profile'
 alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'

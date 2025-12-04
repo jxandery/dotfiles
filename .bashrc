@@ -2,6 +2,12 @@
 # vim:set ft=sh sw=2 sts=2:
 source "$HOME/.sharedrc"
 
+# Load work-specific aliases (GC/NavigatingCancer)
+# Only load if .workrc exists
+if [ -f "$HOME/.workrc" ]; then
+  source "$HOME/.workrc"
+fi
+
 # Store 10,000 history entries
 export HISTSIZE=10000
 # Don't store duplicates

@@ -1,0 +1,79 @@
+# vim:set ft=sh sw=2 sts=2:
+# Work-specific aliases and functions for NavigatingCancer/GC
+
+# ============================================================================
+# GC Project Navigation
+# ============================================================================
+
+alias ngc='cd ~/src/gc'
+alias gc-discover='cd ~/src/gc-discovery'
+
+# ============================================================================
+# GC Development Workflow
+# ============================================================================
+
+# Docker shortcuts
+alias gc-docker='docker compose up gc'
+alias gc-bash='docker compose run --rm gc bash'
+alias gc-rebuild='docker compose run --rm gc bash -c "./bin/rebuild_db"'
+
+# Testing
+alias gc-test='docker compose run --rm gc bash -c "bundle exec rspec"'
+alias gc-spec='docker compose run --rm gc bash -c "bundle exec rspec"'
+
+# Linting
+alias gc-lint='docker compose run --rm gc bash -c "bundle exec rubocop -P"'
+alias gc-lint-auto='docker compose run --rm gc bash -c "bundle exec rubocop -a"'
+
+# Packwerk
+alias gc-pks='docker compose run --rm gc bash -c "pks check"'
+alias gc-pks-update='docker compose run --rm gc bash -c "pks update"'
+
+# ============================================================================
+# GC Git Workflow
+# ============================================================================
+
+# Branch management
+alias gc-branch='git branch | grep -E "feature|bugfix|hotfix"'
+alias gc-worktree='cd ~/src/gc-worktrees'
+
+# Jira integration
+alias gc-ticket-branch='f() { git checkout -b "feature/CM-$1-${2:-description}"; }; f'
+
+# ============================================================================
+# GC Discovery System (from your bin scripts)
+# ============================================================================
+
+# These reference your ~/bin scripts
+alias ticket='gc-ticket'
+alias discover='gc-discover'
+alias ingest='gc-ingest-ticket'
+
+# ============================================================================
+# Confluence
+# ============================================================================
+
+# Confluence page fetching
+alias fetch-confluence='fetch-confluence-page.sh'
+
+# ============================================================================
+# Environment-Specific
+# ============================================================================
+
+# Quick environment checks
+alias gc-env='echo "Environment: $(cat config/environment.rb | grep VERSION)"'
+
+# Database
+alias gc-db-migrate='docker compose run --rm gc bash -c "bundle exec rake db:migrate"'
+alias gc-db-rollback='docker compose run --rm gc bash -c "bundle exec rake db:rollback"'
+alias gc-db-reset='docker compose run --rm gc bash -c "bundle exec rake db:drop db:create db:schema:load db:migrate seed_dump:demo:load"'
+
+# ============================================================================
+# Helpers
+# ============================================================================
+
+# Show work-related aliases
+alias work-aliases='grep "^alias" ~/dotfiles/.workrc'
+
+# Edit this file
+alias edit-work-aliases='vim ~/dotfiles/.workrc'
