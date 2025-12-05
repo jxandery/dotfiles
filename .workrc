@@ -6,8 +6,21 @@
 # ============================================================================
 
 alias ngc='cd ~/src/gc'
-alias gc-discover='cd ~/src/gc-discovery'
+alias microservices='cd ~/src/clinic-solutions-microservices'
+alias symptom-pathways='cd ~/src/cs-symptom-pathways'
+alias worktrees='cd ~/src/gc-worktrees'
+alias metadata='cd ~/src/cs-clinic-metadata'
 
+alias gc-discover='cd ~/src/gc-discovery'
+alias discovery='cd ~/src/gc-discovery'
+
+alias projects='cd ~/src/claude-projects/'
+alias skill-ladder='cd ~/src/claude-projects/ai-skill-ladder'
+alias collab='cd ~/src/claude-projects/claude-collab-project'
+alias workspace='cd ~/src/claude-projects/claude-workspace'
+alias tracker='cd ~/src/claude-projects/prompt-tracker'
+alias archaeology='cd ~/src/claude-projects/code_archaeology'
+alias brainstorm='cd ~/src/claude-brainstorm'
 # ============================================================================
 # GC Development Workflow
 # ============================================================================
@@ -77,3 +90,44 @@ alias work-aliases='grep "^alias" ~/dotfiles/.workrc'
 
 # Edit this file
 alias edit-work-aliases='vim ~/dotfiles/.workrc'
+
+# List Docker-related aliases with descriptions
+docker-scripts() {
+    echo "=== Docker-Related Aliases (GC Development) ==="
+    echo ""
+    printf "  %-20s %-40s %s\n" "Shortcut" "Description" "Command"
+    printf "  %-20s %-40s %s\n" "--------" "-----------" "-------"
+    echo ""
+
+    # Docker shortcuts
+    echo "Docker Shortcuts:"
+    printf "  %-20s %-40s %s\n" "gc-docker" "Start GC service with docker compose" "docker compose up gc"
+    printf "  %-20s %-40s %s\n" "gc-bash" "Open bash shell in GC container" "docker compose run --rm gc bash"
+    printf "  %-20s %-40s %s\n" "gc-rebuild" "Rebuild database in GC container" "docker compose run --rm gc bash -c \"./bin/rebuild_db\""
+    echo ""
+
+    # Testing
+    echo "Testing:"
+    printf "  %-20s %-40s %s\n" "gc-test" "Run RSpec tests in container" "docker compose run --rm gc bash -c \"bundle exec rspec\""
+    printf "  %-20s %-40s %s\n" "gc-spec" "Run RSpec tests (alias for gc-test)" "docker compose run --rm gc bash -c \"bundle exec rspec\""
+    echo ""
+
+    # Linting
+    echo "Linting:"
+    printf "  %-20s %-40s %s\n" "gc-lint" "Run Rubocop linter in container" "docker compose run --rm gc bash -c \"bundle exec rubocop -P\""
+    printf "  %-20s %-40s %s\n" "gc-lint-auto" "Run Rubocop with auto-fix" "docker compose run --rm gc bash -c \"bundle exec rubocop -a\""
+    echo ""
+
+    # Packwerk
+    echo "Packwerk:"
+    printf "  %-20s %-40s %s\n" "gc-pks" "Run Packwerk check in container" "docker compose run --rm gc bash -c \"pks check\""
+    printf "  %-20s %-40s %s\n" "gc-pks-update" "Update Packwerk dependencies" "docker compose run --rm gc bash -c \"pks update\""
+    echo ""
+
+    # Database
+    echo "Database:"
+    printf "  %-20s %-40s %s\n" "gc-db-migrate" "Run database migrations" "docker compose run --rm gc bash -c \"bundle exec rake db:migrate\""
+    printf "  %-20s %-40s %s\n" "gc-db-rollback" "Rollback last migration" "docker compose run --rm gc bash -c \"bundle exec rake db:rollback\""
+    printf "  %-20s %-40s %s\n" "gc-db-reset" "Reset and reseed database" "docker compose run --rm gc bash -c \"bundle exec rake db:drop db:create db:schema:load db:migrate seed_dump:demo:load\""
+    echo ""
+}

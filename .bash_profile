@@ -28,3 +28,6 @@ export PATH
 
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export GEM_HOME="$HOME/.gem"
+
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
