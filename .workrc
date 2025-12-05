@@ -82,6 +82,18 @@ alias gc-db-rollback='docker compose run --rm gc bash -c "bundle exec rake db:ro
 alias gc-db-reset='docker compose run --rm gc bash -c "bundle exec rake db:drop db:create db:schema:load db:migrate seed_dump:demo:load"'
 
 # ============================================================================
+# Ticket Orchestrator
+# ============================================================================
+
+# Add orchestrator to PATH
+export PATH="$HOME/gc-orchestrator/bin:$PATH"
+
+# Ticket management aliases
+alias ticket='ticket-start'           # Start new ticket
+alias tickets='ticket-list'           # List active tickets
+alias ticket-goto='ticket-switch'     # Switch to ticket
+
+# ============================================================================
 # Helpers
 # ============================================================================
 
