@@ -1,0 +1,117 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo:*)",
+      "Bash(ls:*)",
+      "Bash(wc:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(mkdir:*)",
+      "Bash(jq:*)",
+      "Bash(grep:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(sed:*)",
+      "Bash(date:*)",
+      "Bash(test:*)",
+      "Bash(shellcheck:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git stash:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git show-ref:*)",
+      "Bash(git branch:*)",
+      "Bash(git worktree list:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(git checkout -b:*)",
+      "Bash(git fetch:*)",
+      "Bash(git push origin:*)",
+      "Bash(git -C:*)",
+      "Bash(/Users/jackyeh/claude-workspace/scripts/:*)",
+      "Bash(~/claude-workspace/scripts/:*)",
+      "Bash(scripts/ci-gate.sh:*)",
+      "Bash(for f in:*)",
+      "Bash(TIMESTAMP=$(date:*)",
+      "Bash(PROPOSAL_DOC=\"/Users/jackyeh/claude-workspace-worktrees/:*)",
+      "Bash(DISCOVERY_DOC=\"/Users/jackyeh/claude-workspace-worktrees/:*)",
+      "Bash(MAIN_PATH=$(git rev-parse:*)",
+      "Bash(mkdir -p /Users/jackyeh/.claude/review-data:*)",
+      "Bash(mkdir -p ~/.claude/review-data && cat >>:*)",
+      "Edit(/Users/jackyeh/.claude/review-data/**)",
+      "Read(/Users/jackyeh/claude-workspace/.workflow/*)",
+      "Read(/Users/jackyeh/claude-workspace-worktrees/*/.workflow/*)",
+      "Edit(.workflow/*)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jackyeh/.claude-sessions/scripts/log-prompt.sh"
+          },
+          {
+            "type": "command",
+            "command": "/Users/jackyeh/.claude/scripts/iterm-tab-color.sh reset"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f .workflow/state.json ]; then date -u +\"%Y-%m-%dT%H:%M:%SZ\" > .workflow/.last-compact; echo 'Pre-compact marker written'; fi"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jackyeh/.claude/scripts/iterm-tab-color.sh reset"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Task complete\" with title \"Claude Code\"'; /Users/jackyeh/.claude/scripts/iterm-tab-color.sh green"
+          }
+        ]
+      },
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/jackyeh/.claude/scripts/iterm-tab-color.sh amber"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "./claude/statusline.sh",
+    "padding": 0
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 1754147502924
+  }
+}
