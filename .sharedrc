@@ -49,8 +49,89 @@ alias kill9229='kill -9 $(lsof -i tcp:9229 -t)'
 alias ..='cd ..'
 alias mona='cd mona'
 alias tac='cd tactical_agentic_coding'
+alias collab='cd claude-code-collab'
 alias sophie='cd sophie'
 alias yehme='cd yehme'
+alias money='cd ~/projects/money-war-room/'
+alias workspace='cd ~/claude-workspace'
+alias worktrees='cd ~/claude-workspace-worktrees/'
+sophia() {
+  local path
+  path="$(git worktree list --porcelain 2>/dev/null | sed -n 's/^worktree \(.*\/sophia\)$/\1/p')"
+  if [[ -n "$path" ]]; then
+    cd "$path"
+  else
+    local main_repo
+    main_repo="$(git worktree list --porcelain 2>/dev/null | head -1 | sed 's/^worktree //')"
+    if [[ -z "$main_repo" ]]; then
+      cd ~/claude-workspace-worktrees/sophia
+      return
+    fi
+    local target="${main_repo}-worktrees/sophia"
+    echo "Creating sophia worktree at $target ..."
+    git worktree add "$target" -b sophia 2>/dev/null \
+      || git worktree add "$target" sophia \
+      && cd "$target"
+  fi
+}
+ops() {
+  local path
+  path="$(git worktree list --porcelain 2>/dev/null | sed -n 's/^worktree \(.*\/ops\)$/\1/p')"
+  if [[ -n "$path" ]]; then
+    cd "$path"
+  else
+    local main_repo
+    main_repo="$(git worktree list --porcelain 2>/dev/null | head -1 | sed 's/^worktree //')"
+    if [[ -z "$main_repo" ]]; then
+      cd ~/claude-workspace-worktrees/ops
+      return
+    fi
+    local target="${main_repo}-worktrees/ops"
+    echo "Creating ops worktree at $target ..."
+    git worktree add "$target" -b ops 2>/dev/null \
+      || git worktree add "$target" ops \
+      && cd "$target"
+  fi
+}
+quick() {
+  local path
+  path="$(git worktree list --porcelain 2>/dev/null | sed -n 's/^worktree \(.*\/quick\)$/\1/p')"
+  if [[ -n "$path" ]]; then
+    cd "$path"
+  else
+    local main_repo
+    main_repo="$(git worktree list --porcelain 2>/dev/null | head -1 | sed 's/^worktree //')"
+    if [[ -z "$main_repo" ]]; then
+      cd ~/claude-workspace-worktrees/quick
+      return
+    fi
+    local target="${main_repo}-worktrees/quick"
+    echo "Creating quick worktree at $target ..."
+    git worktree add "$target" -b quick 2>/dev/null \
+      || git worktree add "$target" quick \
+      && cd "$target"
+  fi
+}
+overview() {
+  local path
+  path="$(git worktree list --porcelain 2>/dev/null | sed -n 's/^worktree \(.*\/overview\)$/\1/p')"
+  if [[ -n "$path" ]]; then
+    cd "$path"
+  else
+    local main_repo
+    main_repo="$(git worktree list --porcelain 2>/dev/null | head -1 | sed 's/^worktree //')"
+    if [[ -z "$main_repo" ]]; then
+      cd ~/claude-workspace-worktrees/overview
+      return
+    fi
+    local target="${main_repo}-worktrees/overview"
+    echo "Creating overview worktree at $target ..."
+    git worktree add "$target" -b overview 2>/dev/null \
+      || git worktree add "$target" overview \
+      && cd "$target"
+  fi
+}
+
 alias vi='vim'
 alias be='bundle exec'
 alias rspec='bundle exec rspec'

@@ -9,9 +9,8 @@ export PATH=$HOME/bin:$HOME/.local/bin:.git/safe/../../bin:/usr/local/bin:/usr/b
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-. "$HOME/.asdf/asdf.sh"
-
-. "$HOME/.asdf/completions/asdf.bash"
+# asdf version manager (Intel Homebrew location - TODO: migrate to Apple Silicon)
+. "/usr/local/opt/asdf/libexec/asdf.sh"
 
 # heroku autocomplete setup
 HEROKU_AC_BASH_SETUP_PATH=/Users/jackyeh/Library/Caches/heroku/autocomplete/bash_setup && test -f $HEROKU_AC_BASH_SETUP_PATH && source $HEROKU_AC_BASH_SETUP_PATH;
@@ -28,6 +27,9 @@ export PATH
 
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export GEM_HOME="$HOME/.gem"
+export PATH="$HOME/.gem/bin:$PATH"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+export GITHUB_TOKEN=$(gh auth token)

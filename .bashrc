@@ -76,6 +76,8 @@ cd() {
     builtin cd "$@"
     claude_auto_setup
 }
+
+# Additional aliases and configurations
 alias ibrew="arch -x86_64 brew"
 export PATH="/usr/local/homebrew/bin:$PATH"
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
@@ -84,7 +86,10 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 alias claude-projects='echo "=== Claude Code Projects ==="; find ~/src ~/claude-projects ~ -maxdepth 2 -name ".claude" -type d 2>/dev/null | sed "s|/.claude||" | grep -Ev "^$HOME\$" | sort'
 
 # Claude Prompt Tracker CLI
-export PATH="/Users/jyeh/claude-projects/prompt-tracker/bin:$PATH"
+export PATH="/Users/jackyeh/prompt-tracker/bin:$PATH"
+
+# Added by Claude Code Collaboration installer
+export PATH="$HOME/bin:$PATH"
 
 # List all personal helper scripts with descriptions
 my-scripts() {
@@ -93,10 +98,8 @@ my-scripts() {
     for script in ~/bin/*; do
         if [ -f "$script" ] && [ -x "$script" ]; then
             name=$(basename "$script")
-            # Extract description from script header (looks for "# Description:" or first comment line)
             desc=$(grep -E "^# (Description:|Usage:)" "$script" | head -1 | sed 's/^# *//' | sed 's/Description: *//')
             if [ -z "$desc" ]; then
-                # If no explicit description, get first comment line
                 desc=$(grep -E "^#" "$script" | head -1 | sed 's/^# *//')
             fi
             printf "  %-35s %s\n" "$name" "$desc"
@@ -121,11 +124,9 @@ my-scripts-search() {
     done
 }
 
-# Alias for convenience
 alias scripts='my-scripts'
 alias scripts-search='my-scripts-search'
 
-# View script documentation
 scripts-help() {
     if [ -f ~/bin/README.md ]; then
         less ~/bin/README.md
@@ -134,7 +135,6 @@ scripts-help() {
     fi
 }
 
-# Edit a script quickly
 edit-script() {
     if [ -z "$1" ]; then
         echo "Usage: edit-script SCRIPT_NAME"

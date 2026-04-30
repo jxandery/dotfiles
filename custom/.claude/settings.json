@@ -1,4 +1,5 @@
 {
+  "cleanupPeriodDays": 90,
   "permissions": {
     "allow": [
       "Bash(echo:*)",
@@ -37,10 +38,8 @@
       "Bash(~/claude-workspace/scripts/:*)",
       "Bash(scripts/ci-gate.sh:*)",
       "Bash(for f in:*)",
-      "Bash(TIMESTAMP=$(date:*)",
       "Bash(PROPOSAL_DOC=\"/Users/jackyeh/claude-workspace-worktrees/:*)",
       "Bash(DISCOVERY_DOC=\"/Users/jackyeh/claude-workspace-worktrees/:*)",
-      "Bash(MAIN_PATH=$(git rev-parse:*)",
       "Bash(mkdir -p /Users/jackyeh/.claude/review-data:*)",
       "Bash(mkdir -p ~/.claude/review-data && cat >>:*)",
       "Edit(/Users/jackyeh/.claude/review-data/**)",
@@ -49,6 +48,7 @@
       "Edit(.workflow/*)"
     ]
   },
+  "model": "opus",
   "hooks": {
     "UserPromptSubmit": [
       {
@@ -108,9 +108,10 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "./claude/statusline.sh",
+    "command": "/Users/jackyeh/.claude/statusline.sh",
     "padding": 0
   },
+  "skipDangerousModePermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754147502924
   }
