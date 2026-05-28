@@ -59,7 +59,17 @@ find-up () {
 }
 
 # Claude Prompt Tracker: Auto-install slash commands in new projects
+#
+# Skipped when .claude is a symlink — those point to managed shared state
+# (gc-orchestrator's centralized .claude/, etc.) and writing through them
+# would either modify the shared target or, if the symlink were broken at
+# hook-fire time, would create a real directory that clobbers the symlink
+# on subsequent ticket-start runs. The -L check guards against both cases.
+# See gc-orchestrator changelog v3.23.11 / task #36 for the diagnosis.
 claude_auto_setup() {
+    if [ -L "$PWD/.claude" ]; then
+        return
+    fi
     if [ -d "$PWD/.claude" ] && [ ! -d "$PWD/.claude/commands" ]; then
         TRACKER_COMMANDS="$HOME/claude-projects/prompt-tracker/templates/claude-commands"
         if [ -d "$TRACKER_COMMANDS" ]; then
@@ -159,3 +169,4 @@ EOF
 
     ${EDITOR:-vim} "$script_path"
 }
+export PATH="$PATH:/Users/jyeh/gc-orchestrator/bin"
