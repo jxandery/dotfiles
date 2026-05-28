@@ -8,11 +8,15 @@
 alias ngc='cd ~/src/gc'
 alias microservices='cd ~/src/clinic-solutions-microservices'
 alias symptom-pathways='cd ~/src/cs-symptom-pathways'
+alias cbui='cd ~/src/cohort-builder-ui/'
 alias worktrees='cd ~/src/gc-worktrees'
 alias metadata='cd ~/src/cs-clinic-metadata'
+alias jarvis='cd ~/gc-orchestrator'
 
 alias gc-discover='cd ~/src/gc-discovery'
 alias discovery='cd ~/src/gc-discovery'
+
+alias aws_sso='aws sso login --profile direct && aws sso login --profile cleardata'
 
 alias projects='cd ~/src/claude-projects/'
 alias skill-ladder='cd ~/src/claude-projects/ai-skill-ladder'
