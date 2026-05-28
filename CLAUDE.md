@@ -79,3 +79,36 @@ Captures origin of changes for audit and debugging purposes.
 - Use clear examples
 - Format tables with aligned pipes (see above)
 - Document assumptions and limitations
+
+## Session Handoffs
+
+Per-project `HANDOFF.md` files live at project roots (gitignored globally via `~/.gitignore`).
+Central briefing at `~/.handoffs/index.md` aggregates all projects.
+
+- `/handoff` — Context-aware: writes to `.discovery/handoff.md` (ticket worktree) or `HANDOFF.md` (project root). Updates central index after writing.
+- `/session-briefing` — Recap of the current Claude session (what we did, decisions, still to do).
+- `/project-briefing` — Status of the current project (branches, worktrees, PRs, Docker, last handoff). Detects project from working directory.
+- `/global-briefing` — Morning briefing across all projects. Reads `~/.handoffs/index.md`.
+- `session-briefing` — CLI script that regenerates `~/.handoffs/index.md`. Use `--cat` to print, `--open` to edit.
+- `/familiarize` — Reads both project-level `HANDOFF.md` and ticket-level `.discovery/handoff.md` when resuming.
+
+## The Ledger
+
+Personal knowledge capture at `~/.ledger/`. Each file is a category with workflow
+instructions at the top (HTML comment). Read those instructions before adding or
+searching. Full guide: `~/.ledger/USAGE.md`.
+
+**Error lookup** (when user pastes an error or stack trace):
+1. Search `~/.ledger/errors-bugs.md` first
+2. Then search project-specific troubleshooting docs
+3. Report: status, fix, version resolved, whether worktree needs updating
+4. If new: add to `~/.ledger/errors-bugs.md` with Status=Open
+
+**Capture** (when user shares an idea, observation, or note):
+Pick the category from `~/.ledger/README.md`, add to the appropriate file.
+
+**Maintenance** (opportunistic): When you open a Ledger file and notice entries
+that appear stale (e.g., an "Open" error that has since been resolved), mention
+it to the user.
+
+If `~/.ledger/` doesn't exist, skip Ledger operations.
