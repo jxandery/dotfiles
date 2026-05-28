@@ -1,5 +1,3 @@
-source ~/.bashrc
-
 alias ltmate="tmate_ssh=tmate display -p '#{tmate_ssh}'"
 
 terminate(){
@@ -31,5 +29,10 @@ export PATH="$HOME/.gem/bin:$PATH"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-
 export GITHUB_TOKEN=$(gh auth token)
+
+alias my-changes='git diff develop...HEAD --name-status'
+
+# Source .bashrc last so its PATH additions (gc-orchestrator/bin, .sharedrc)
+# survive the hardcoded PATH export above.
+source ~/.bashrc
